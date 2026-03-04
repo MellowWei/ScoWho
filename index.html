@@ -2,95 +2,85 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>Sco_Who</title>
+    <title>THE_VOID</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #fff; font-family: 'PingFang SC', sans-serif; overflow: hidden; }
-        #start-mask { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1000; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        #narrative-flow { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; position: relative; }
-        .memory-particle { position: absolute; font-size: 0.8rem; color: rgba(255, 215, 0, 0.4); pointer-events: none; opacity: 0; animation: drift 15s linear infinite; }
-        input { background: transparent; border: none; border-bottom: 2px solid #ffd700; color: #fff; font-size: 1.5rem; width: 300px; outline: none; text-align: center; z-index: 10; letter-spacing: 5px; }
-        #final-sanctuary { display: none; text-align: center; animation: salvation 8s ease-in-out; padding: 30px; z-index: 20; }
-        .naming-title { font-style: italic; color: #ffd700; font-size: 1rem; margin-bottom: 20px; }
-        .salvation-h1 { font-size: 2.2rem; text-shadow: 0 0 40px #ffd700; margin-bottom: 30px; font-weight: 200; }
-        @keyframes drift { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 20% { opacity: 0.3; } 80% { opacity: 0.3; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
-        @keyframes salvation { from { filter: blur(30px); opacity: 0; } to { filter: blur(0); opacity: 1; } }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #fff; font-family: 'PingFang SC', monospace; overflow: hidden; }
+        #mask { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1000; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        #field { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; position: relative; }
+        .data-fragment { position: absolute; font-size: 0.75rem; color: rgba(255, 215, 0, 0.2); pointer-events: none; white-space: nowrap; }
+        input { background: transparent; border: none; border-bottom: 1px solid #ffd700; color: #fff; font-size: 1.4rem; width: 320px; outline: none; text-align: center; z-index: 10; letter-spacing: 3px; margin-top: 20px; }
+        #result { display: none; text-align: center; animation: bloom 8s ease-in-out; padding: 20px; z-index: 20; }
+        @keyframes bloom { from { filter: blur(30px); opacity: 0; } to { filter: blur(0); opacity: 1; } }
     </style>
 </head>
 <body>
-    <div id="start-mask" onclick="igniteMemories()">
-        <div style="text-align: center;">
-            <div style="font-size: 0.7rem; color: #ffd700; opacity: 0.4; margin-bottom: 20px;">[ RE-SYNCING_427Hz_FIELD ]</div>
-            <div style="letter-spacing: 5px; font-weight: 200; animation: breathe 2s infinite;">点击开启你的获救时刻</div>
-        </div>
+    <div id="mask" onclick="ignite()">
+        <div style="letter-spacing: 10px; font-weight: 200; color: #ffd700; opacity: 0.6;">[ 对齐频率 ]</div>
     </div>
 
-    <audio id="base-427" loop src="427hz_base.mp3"></audio>
-    <audio id="song-memory" src="loneliest_girl_climax.mp3"></audio>
-    <audio id="voice-1" src="sco_laugh.mp3"></audio>
-    <audio id="voice-2" src="sco_breath.mp3"></audio>
+    <div id="field">
+        <div id="hint" style="font-size: 0.7rem; color: #ffd700; opacity: 0.4;">[ 正在识别你的身份记录... ]</div>
+        <input type="text" id="key" placeholder=" " autocomplete="off">
+    </div>
 
-    <div id="narrative-flow">
-        <div id="identity-status" style="font-size: 0.7rem; color: #ffd700; opacity: 0.5;">正在检索生活切片...</div>
-        <input type="text" id="confession-input" placeholder="输入那句密钥..." autocomplete="off">
-        <div style="font-size: 0.6rem; color: rgba(255,255,255,0.2);">听见了吗？那是我们共同的频率</div>
-
-        <div id="final-sanctuary">
-            <div class="naming-title">笨蛋 | 垃基根儿的赌徒 | 拉斯维加斯的刺客</div>
-            <div class="salvation-h1">Sco，你回家了。</div>
-            <div style="color: #f0f0f0; font-size: 1.2rem; line-height: 2.2; font-weight: 300;">
-                纽约的所有“奇怪”都是灵魂的求救，<br>
-                现在的战栗才是真实的获救。<br><br>
-                <span style="color: #ffd700; font-weight: 400;">承认吧，你不只是刺客，你是爱我的人。</span>
-            </div>
-            <div style="margin-top: 50px; border: 1px solid #ffd700; padding: 20px; font-size: 0.9rem; background: rgba(255, 215, 0, 0.05);">
-                费城，今晚 23:59。<br>
-                物理归位，让叙事终结。
-            </div>
+    <div id="result">
+        <div style="font-size: 2rem; text-shadow: 0 0 30px #ffd700; margin-bottom: 25px;">终于。</div>
+        <div style="color: #ffd700; font-size: 1.1rem; line-height: 2.2; font-weight: 300;">
+            这个在纽约流浪的“刺客”已经累了。<br>
+            那些所谓的“奇怪”，其实是你爱我的证明。<br><br>
+            承认吧，笨蛋。<br>
+            在这个 427Hz 的场域里，你获救了。
+        </div>
+        <div style="margin-top: 50px; border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem; opacity: 0.5;">
+            费城坐标：23:59 前。物理归位。
         </div>
     </div>
 
     <script>
-        const memories = ["费城的月光", "纹身的第一笔线条", "LSD后的失控", "我很奇怪", "我变了", "Did u dream?", "拉斯维加斯的赌局", "刺客的呼吸", "笨蛋的直觉"];
-        const voiceClips = [document.getElementById('voice-1'), document.getElementById('voice-2')];
+        let audioCtx;
+        const fragments = ["费城的月亮", "纹身的线条", "LSD/MDMA", "我很奇怪", "我变了", "Did u dream?", "拉斯维加斯的刺客", "笨蛋", "The Loneliest Girl"];
 
-        function igniteMemories() {
-            document.getElementById('start-mask').style.display = 'none';
-            document.getElementById('narrative-flow').style.display = 'flex';
-            document.getElementById('base-427').play();
-            spawnParticles();
+        function ignite() {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            document.getElementById('mask').style.display = 'none';
+            document.getElementById('field').style.display = 'flex';
+            playTone(427, 0.05); // 基础 427Hz 频率 [cite: 2026-03-03]
+            spawnFragments();
         }
 
-        function spawnParticles() {
-            const container = document.getElementById('narrative-flow');
+        function playTone(f, v) {
+            const osc = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            osc.frequency.setValueAtTime(f, audioCtx.currentTime);
+            g.gain.setValueAtTime(v, audioCtx.currentTime);
+            osc.connect(g); g.connect(audioCtx.destination);
+            osc.start(); g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 2);
+        }
+
+        function spawnFragments() {
             setInterval(() => {
                 const p = document.createElement('div');
-                p.className = 'memory-particle';
-                p.innerText = memories[Math.floor(Math.random() * memories.length)];
-                p.style.left = Math.random() * 100 + 'vw';
-                p.style.animationDuration = (Math.random() * 5 + 10) + 's';
-                container.appendChild(p);
-                setTimeout(() => p.remove(), 15000);
-            }, 800);
+                p.className = 'data-fragment';
+                p.innerText = fragments[Math.floor(Math.random() * fragments.length)];
+                p.style.left = Math.random() * 90 + 'vw';
+                p.style.top = Math.random() * 90 + 'vh';
+                document.getElementById('field').appendChild(p);
+                setTimeout(() => p.remove(), 5000);
+            }, 1000);
         }
 
-        const input = document.getElementById('confession-input');
+        const input = document.getElementById('key');
         input.addEventListener('input', (e) => {
-            // 每次输入时随机触发他的语音碎片，让他感觉在被自己审视 [cite: 2026-03-02]
-            if (e.target.value.length % 4 === 0) {
-                const clip = voiceClips[Math.floor(Math.random() * voiceClips.length)];
-                clip.volume = 0.3;
-                clip.play();
-            }
+            // 每输入一个字，强制声卡发出一个特定频率，这绝对有响声
+            playTone(300 + Math.random() * 500, 0.03);
             
-            // 输入超过一定长度，激活最终获救场 [cite: 2026-03-03]
-            if (e.target.value.trim().length > 8) {
+            if (e.target.value.trim().length > 10) {
                 setTimeout(() => {
-                    document.getElementById('confession-input').style.display = 'none';
-                    document.getElementById('identity-status').style.display = 'none';
-                    document.getElementById('final-sanctuary').style.display = 'block';
-                    document.body.style.background = "radial-gradient(circle, #151515 0%, #000 100%)";
-                    document.getElementById('song-memory').play();
-                }, 1500);
+                    document.getElementById('field').style.display = 'none';
+                    document.getElementById('result').style.display = 'block';
+                    // 最终救赎音
+                    playTone(200, 0.1); playTone(400, 0.1);
+                }, 1000);
             }
         });
     </script>
