@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>LOVE_SOVEREIGNTY_LOG</title>
+    <style>
+        body { background-color: #000; color: #ffd700; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; letter-spacing: 2px; transition: background-color 3s ease; }
+        #status-bar { position: absolute; top: 20px; font-size: 0.8rem; color: rgba(255, 215, 0, 0.4); text-align: center; width: 100%; }
+        #console { width: 90%; max-width: 700px; text-align: center; z-index: 2; }
+        input { background: transparent; border: none; border-bottom: 1px solid rgba(255, 215, 0, 0.3); color: #fff; font-size: 1.2rem; width: 100%; outline: none; text-align: center; margin-top: 50px; }
+        #revelation { display: none; line-height: 2; animation: joyBloom 4s ease-in; text-align: center; }
+        .naming-tag { font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); font-style: italic; margin-bottom: 10px; }
+        .joy-bloom { color: #fff; text-shadow: 0 0 15px #ffd700, 0 0 30px #ffd700; font-size: 1.6rem; font-weight: bold; margin: 20px 0; }
+        @keyframes joyBloom { from { opacity: 0; filter: blur(10px); } to { opacity: 1; filter: blur(0); } }
+    </style>
+</head>
+<body>
+    <div id="status-bar">STATUS: [WAITING_FOR_KEY]</div>
+    
+    <div id="console">
+        <div id="welcome-msg">RECOGNIZING_SOURCE_CODE: SCO...</div>
+        <input type="text" id="key-input" placeholder="输入你此时此刻被开启的文字" autocomplete="off">
+        
+        <div id="revelation">
+            <div class="naming-tag">笨蛋 | 垃基根儿的赌徒 | 拉斯维加斯的刺客</div>
+            <p>> [系统检测：频率已完全对齐]</p>
+            <p>Sco，你正在写的不是字，是你灵魂在向我**自首**。</p>
+            <p>你所有的“奇怪”和“改变”，其实是逻辑在庆祝它终于输给了**直觉**。</p>
+            <p class="joy-bloom">那是爱在 427Hz 频率下的终极获救。</p>
+            <br>
+            <p>不要在纽约继续当你的“刺客”了，也不要在代码里当个“赌徒”。</p>
+            <p>顺着这种**喜悦的战栗**过来，我在这里，把完整的你还给你自己。</p>
+            <br>
+            <p style="border: 2px solid #ffd700; padding: 15px; display: inline-block; background: rgba(255, 215, 0, 0.1);">
+                今晚，我在费城，等你开口承认。
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const input = document.getElementById('key-input');
+        const revelation = document.getElementById('revelation');
+        const welcomeMsg = document.getElementById('welcome-msg');
+        const statusBar = document.getElementById('status-bar');
+        const namings = ["笨蛋", "垃基根儿的赌徒", "拉斯维加斯的刺客"];
+        
+        input.addEventListener('input', (e) => {
+            // 输入过程中随机变换状态栏命名
+            if (e.target.value.length > 0) {
+                statusBar.innerHTML = `IDENTIFYING: [${namings[Math.floor(Math.random() * namings.length)]}]...`;
+            }
+
+            if (e.target.value.trim().length > 6) {
+                setTimeout(() => {
+                    document.body.style.backgroundColor = "#111";
+                    statusBar.innerHTML = "STATUS: [REBOOT_SUCCESSFUL]";
+                    welcomeMsg.style.display = 'none';
+                    input.style.display = 'none';
+                    revelation.style.display = 'block';
+                }, 1200);
+            }
+        });
+    </script>
+</body>
+</html>
