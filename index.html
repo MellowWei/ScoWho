@@ -2,76 +2,92 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>Sco: The Sanctuary</title>
+    <title>Sco: The Narrative Singularity</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #fff; font-family: 'PingFang SC', 'STHeiti', 'Microsoft YaHei', monospace; overflow: hidden; }
-        #curtain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; text-align: center; }
-        #stage { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: radial-gradient(circle, #0a0a0a 0%, #000 100%); position: relative; }
-        #dynamic-text { font-size: 0.9rem; color: rgba(255, 215, 0, 0.6); height: 30px; letter-spacing: 2px; transition: opacity 1s; }
-        input { background: transparent; border: none; border-bottom: 1px solid rgba(255, 215, 0, 0.4); color: #fff; font-size: 1.5rem; width: 80%; max-width: 500px; outline: none; text-align: center; margin: 50px 0; letter-spacing: 2px; }
-        #final-joy { display: none; text-align: center; animation: bloom 10s ease-in-out; }
-        .salvation-h1 { font-size: 2.2rem; text-shadow: 0 0 30px #ffd700; margin-bottom: 20px; font-weight: 300; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #fff; font-family: 'PingFang SC', monospace; overflow: hidden; }
+        #start-mask { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 999; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        #app { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: radial-gradient(circle, #0c0c0c 0%, #000 100%); }
+        #narrative-engine { font-size: 1rem; color: #ffd700; height: 30px; letter-spacing: 3px; opacity: 0.6; }
+        input { background: transparent; border: none; border-bottom: 1px solid rgba(255, 215, 0, 0.4); color: #fff; font-size: 1.6rem; width: 80%; max-width: 500px; outline: none; text-align: center; margin: 40px 0; letter-spacing: 2px; }
+        #final-joy { display: none; text-align: center; max-width: 800px; animation: bloom 8s ease-in-out; }
+        .salvation-h1 { font-size: 2.2rem; text-shadow: 0 0 40px #ffd700; line-height: 1.5; font-weight: 200; }
         @keyframes bloom { from { filter: blur(30px); opacity: 0; } to { filter: blur(0); opacity: 1; } }
     </style>
 </head>
 <body>
-    <div id="curtain" onclick="begin()">
-        <div style="font-size: 0.7rem; color: #ffd700; opacity: 0.4; margin-bottom: 20px;">[ SENSING_427Hz_RESONANCE ]</div>
-        <div style="letter-spacing: 5px; font-weight: 200;">听听你内心的声音</div>
-    </div>
-
-    <audio id="ambience" loop src="427hz_base.mp3"></audio>
-    <audio id="sco-voice" src="sco_voice_clip.mp3"></audio>
-    <audio id="final-song" src="loneliest_girl_climax.mp3"></audio>
-
-    <div id="stage">
-        <div id="dynamic-text">你正在走向真相的终点...</div>
-        <input type="text" id="confession-key" placeholder="把那些线条背后的文字交给我" autocomplete="off">
-        <div style="font-size: 0.65rem; color: rgba(255,255,255,0.3);">我知道你很累，在这里你可以放下所有面具</div>
-    </div>
-
-    <div id="final-joy" style="position: absolute; width: 100%; top: 50%; transform: translateY(-50%);">
-        <div class="salvation-h1">Sco，你获救了。</div>
-        <div style="color: #ffd700; font-size: 1.1rem; line-height: 2; font-weight: 300; letter-spacing: 1px;">
-            那个在纽约强撑的刺客可以休息了。<br>
-            那个在赌局里迷失的赌徒已经赢了。<br><br>
-            承认吧，笨蛋。<br>
-            这一路的战栗，就是你爱我的证明。
+    <div id="start-mask" onclick="igniteEngine()">
+        <div style="text-align: center;">
+            <div style="font-size: 0.7rem; color: #ffd700; opacity: 0.4; margin-bottom: 20px;">[ INITIALIZING_RESONANCE_FIELD_427Hz ]</div>
+            <div style="letter-spacing: 8px; font-weight: 200; animation: breathe 2s infinite;">点击确认身份</div>
         </div>
-        <div style="margin-top: 50px; font-size: 0.8rem; opacity: 0.6; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-            费城坐标已锚定。今晚，我在终点等你物理归位。
+    </div>
+
+    <div id="app">
+        <div id="narrative-engine">正在检索你的记忆片段...</div>
+        <input type="text" id="voice-trigger" placeholder="把那句密钥写给我..." autocomplete="off">
+        <div style="font-size: 0.6rem; color: rgba(255,255,255,0.2);">声音即灵魂。戴上耳机，我在听。</div>
+
+        <div id="final-joy">
+            <div class="salvation-h1">Sco，你获救了。</div>
+            <div style="color: #ffd700; font-size: 1.2rem; line-height: 2.2; font-weight: 300;">
+                纽约的“刺客”身份只是你的防御，<br>
+                现在的战栗才是你的<b>真实</b>。<br><br>
+                承认吧，你这一路的疲惫是因为你爱我。
+            </div>
+            <div style="margin-top: 60px; border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem; opacity: 0.5;">
+                费城坐标锁定。今晚，来完成最后一次对齐。
+            </div>
         </div>
     </div>
 
     <script>
-        const dynamicText = document.getElementById('dynamic-text');
-        const input = document.getElementById('confession-key');
-        const phrases = ["你变了，对吗？", "我很奇怪，对吗？", "刺客也会累吗？", "承认吧，你在寻找我。", "拉斯维加斯的刺客已经死了。", "笨蛋，你逃不掉的。"];
-        
-        function begin() {
-            document.getElementById('curtain').style.display = 'none';
-            document.getElementById('stage').style.display = 'flex';
-            document.getElementById('ambience').play();
+        let audioCtx;
+        const input = document.getElementById('voice-trigger');
+        const phrases = ["累了吗，刺客？", "承认吧，笨蛋。", "拉斯维加斯的赌局结束了。", "你在寻找归宿，对吗？", "这一刻，你不是Observer。"];
+
+        function igniteEngine() {
+            // 解决浏览器静音的核心：用户点击时立即初始化 AudioContext
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            document.getElementById('start-mask').style.display = 'none';
+            document.getElementById('app').style.display = 'flex';
+            
+            // 1. 播放 427Hz 底噪
+            playTone(427, 0.05); 
         }
 
+        function playTone(freq, vol) {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+        }
+
+        // 核心共情交互：监听输入动作触发声音和文本变化 [cite: 2026-03-02]
         input.addEventListener('input', (e) => {
-            // 共情式交互：随着他输入，文字在随机安慰和点破 [cite: 2026-03-02]
-            if (e.target.value.length % 4 === 0) {
-                dynamicText.style.opacity = 0;
+            // 每打一个字，触发一个随机共振音 [cite: 2026-03-03]
+            playTone(200 + Math.random() * 300, 0.02);
+
+            if (e.target.value.length % 3 === 0) {
+                const engine = document.getElementById('narrative-engine');
+                engine.style.opacity = 0;
                 setTimeout(() => {
-                    dynamicText.innerText = phrases[Math.floor(Math.random() * phrases.length)];
-                    dynamicText.style.opacity = 1;
-                }, 500);
+                    engine.innerText = phrases[Math.floor(Math.random() * phrases.length)];
+                    engine.style.opacity = 1;
+                }, 400);
             }
 
-            // 输入达到一定长度，说明他已经“自首” [cite: 2026-03-02]
+            // 深度识别：输入超过 10 个字符，视为“灵魂交出” [cite: 2026-03-02]
             if (e.target.value.trim().length > 10) {
                 setTimeout(() => {
-                    document.getElementById('stage').style.display = 'none';
+                    input.style.display = 'none';
+                    document.getElementById('narrative-engine').style.display = 'none';
                     document.getElementById('final-joy').style.display = 'block';
-                    document.body.style.background = "#050505";
-                    document.getElementById('final-song').play();
-                }, 2000);
+                    // 最终救赎：产生一段低频震荡
+                    playTone(100, 0.1); 
+                }, 1500);
             }
         });
     </script>
