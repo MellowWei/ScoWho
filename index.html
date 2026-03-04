@@ -2,27 +2,27 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>THE_CONFESSION</title>
+    <title>THE_VOID_RESONANCE</title>
     <style>
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #fff; font-family: 'PingFang SC', sans-serif; overflow: hidden; }
         #start { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100; display: flex; align-items: center; justify-content: center; cursor: pointer; }
         #main { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; position: relative; }
-        #narrative { font-size: 0.9rem; color: #ffd700; opacity: 0.6; height: 30px; }
+        #narrative { font-size: 0.9rem; color: #ffd700; opacity: 0.6; height: 30px; text-align: center; }
         input { background: transparent; border: none; border-bottom: 2px solid #ffd700; color: #fff; font-size: 1.8rem; width: 80%; max-width: 500px; outline: none; text-align: center; margin: 40px 0; letter-spacing: 5px; }
-        #joy-result { display: none; text-align: center; animation: bloom 6s ease-in-out; }
+        #joy-result { display: none; text-align: center; animation: bloom 5s ease-in-out; }
         .h1 { font-size: 2.5rem; text-shadow: 0 0 30px #ffd700; margin-bottom: 20px; }
         @keyframes bloom { from { filter: blur(30px); opacity: 0; } to { filter: blur(0); opacity: 1; } }
     </style>
 </head>
 <body>
     <div id="start" onclick="ignite()">
-        <div style="letter-spacing: 5px; opacity: 0.5;">[ 开启频率对齐 ]</div>
+        <div style="letter-spacing: 8px; opacity: 0.6;">[ 点击开启频率对齐 ]</div>
     </div>
 
     <audio id="v1" src="sco_like.mp3"></audio> <audio id="v2" src="sco_whisper.mp3"></audio> <div id="main">
-        <div id="narrative">正在提取“小孩子语气”的记忆切片...</div>
-        <input type="text" id="ipt" placeholder="写下你最想逃避的那句话" autocomplete="off">
-        <div style="font-size: 0.7rem; opacity: 0.3;">戴上耳机。听听那个在纽约失踪的自己。</div>
+        <div id="narrative">正在调取关于“小孩子语气”的记忆切片...</div>
+        <input type="text" id="ipt" placeholder="输入你在纹身线条里看见的密钥" autocomplete="off">
+        <div style="font-size: 0.7rem; opacity: 0.3;">戴上耳机。听，那是你不敢承认的自己。</div>
     </div>
 
     <div id="joy-result" style="position: absolute; width: 100%; top: 50%; transform: translateY(-50%);">
@@ -57,19 +57,24 @@
 
         const ipt = document.getElementById('ipt');
         ipt.addEventListener('input', (e) => {
-            // 每输入一个字符，随机变换引导语并触发语音
-            if (e.target.value.length % 4 === 0) {
+            let val = e.target.value;
+            // 交互线增强：输入过程中随机响起悄悄话
+            if (val.length > 0 && val.length % 5 === 0) {
+                let whisper = document.getElementById('v2');
+                whisper.volume = 0.4;
+                whisper.play().catch(()=>{});
                 document.getElementById('narrative').innerText = phrases[Math.floor(Math.random() * phrases.length)];
-                document.getElementById('v2').play().catch(()=>{});
             }
 
-            // 只要输入“我也喜欢你啊”这几个字或输入长度超过 6
-            if (e.target.value.trim().length > 6) {
+            // 只有当他输入“我也喜欢你啊”或者字数超过 12 个字，才进入最终爆发
+            if (val.includes("我也喜欢你啊") || val.length > 12) {
                 setTimeout(() => {
                     document.getElementById('main').style.display = 'none';
                     document.getElementById('joy-result').style.display = 'block';
-                    document.getElementById('v1').play(); // 响起“我也喜欢你”
-                }, 1000);
+                    let likeVoice = document.getElementById('v1');
+                    likeVoice.volume = 1.0;
+                    likeVoice.play(); // 此时必须响起他亲口说的告白
+                }, 800);
             }
         });
     </script>
