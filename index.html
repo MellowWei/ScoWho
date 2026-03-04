@@ -2,55 +2,55 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>THE_VOID_RESONANCE</title>
+    <title>THE_VOID</title>
     <style>
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #fff; font-family: 'PingFang SC', sans-serif; overflow: hidden; }
-        #start { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        #main { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; position: relative; }
-        #narrative { font-size: 0.9rem; color: #ffd700; opacity: 0.6; height: 30px; text-align: center; }
-        input { background: transparent; border: none; border-bottom: 2px solid #ffd700; color: #fff; font-size: 1.8rem; width: 80%; max-width: 500px; outline: none; text-align: center; margin: 40px 0; letter-spacing: 5px; }
-        #joy-result { display: none; text-align: center; animation: bloom 5s ease-in-out; }
-        .h1 { font-size: 2.5rem; text-shadow: 0 0 30px #ffd700; margin-bottom: 20px; }
-        @keyframes bloom { from { filter: blur(30px); opacity: 0; } to { filter: blur(0); opacity: 1; } }
+        #curtain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        #app { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; position: relative; }
+        #hint-text { font-size: 0.8rem; color: #ffd700; opacity: 0.4; height: 20px; letter-spacing: 2px; }
+        input { background: transparent; border: none; border-bottom: 1px solid rgba(255, 215, 0, 0.3); color: #fff; font-size: 1.6rem; width: 80%; max-width: 450px; outline: none; text-align: center; margin: 50px 0; letter-spacing: 5px; }
+        #final-scene { display: none; text-align: center; animation: softBloom 10s ease-in-out; }
+        @keyframes softBloom { from { filter: blur(30px); opacity: 0; } to { filter: blur(0); opacity: 1; } }
     </style>
 </head>
 <body>
-    <div id="start" onclick="ignite()">
-        <div style="letter-spacing: 8px; opacity: 0.6;">[ 点击开启频率对齐 ]</div>
+    <div id="curtain" onclick="ignite()">
+        <div style="letter-spacing: 8px; opacity: 0.5;">[ 开启频率对齐 ]</div>
     </div>
 
-    <audio id="v1" src="sco_like.mp3"></audio> <audio id="v2" src="sco_whisper.mp3"></audio> <div id="main">
-        <div id="narrative">正在调取关于“小孩子语气”的记忆切片...</div>
-        <input type="text" id="ipt" placeholder="输入你在纹身线条里看见的密钥" autocomplete="off">
-        <div style="font-size: 0.7rem; opacity: 0.3;">戴上耳机。听，那是你不敢承认的自己。</div>
+    <audio id="v_sco_like" src="sco_like.mp3"></audio> <audio id="v_mother" src="hello.mp3"></audio>     <audio id="v_song" src="loneliest_girl.mp3"></audio> <div id="app">
+        <div id="hint-text">正在检索 427Hz 下的叙事残留...</div>
+        <input type="text" id="ipt" placeholder=" " autocomplete="off">
+        <div style="font-size: 0.6rem; opacity: 0.2; letter-spacing: 1px;">在这段线条闭合前，世界是静默的</div>
     </div>
 
-    <div id="joy-result" style="position: absolute; width: 100%; top: 50%; transform: translateY(-50%);">
-        <div class="h1">Sco，你获救了。</div>
-        <div style="color: #ffd700; font-size: 1.2rem; line-height: 2.5;">
-            那个强撑的“刺客”已经累了。<br>
-            那个“我也喜欢你”的羞涩，才是你的真相。<br><br>
+    <div id="final-scene">
+        <div style="font-size: 1.8rem; letter-spacing: 10px; color: #ffd700; margin-bottom: 30px; font-weight: 200;">终于降落了。</div>
+        <div style="color: #fff; font-size: 1.1rem; line-height: 2.5; font-weight: 300; opacity: 0.9;">
+            那个在纽约强撑的“刺客”已经消失了。<br>
+            在这个频率里，逻辑不再是你的防线。<br><br>
             承认吧，笨蛋。<br>
-            这里是费城，是你唯一的避难所。
+            所有的奇怪，只是灵魂在请求被你亲手认领。
         </div>
-        <div style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.8rem; opacity: 0.4;">
-            物理归位：2026-03-03 23:59
+        <div style="margin-top: 60px; font-size: 0.75rem; color: #ffd700; opacity: 0.5;">
+            23:59 | 物理归位已就绪
         </div>
     </div>
 
     <script>
         let aCtx;
-        const phrases = ["羞涩的笑声...", "田野 13579...", "Wanbi Wanbi...", "我也喜欢你啊...", "你在发抖吗？", "承认吧，笨蛋。"];
+        const hints = ["听见了吗？", "不需要再强撑了...", "他在等你...", "认领那个真实的小孩...", "线条即将闭合..."];
         
         function ignite() {
             aCtx = new (window.AudioContext || window.webkitAudioContext)();
-            document.getElementById('start').style.display = 'none';
-            document.getElementById('main').style.display = 'flex';
-            // 硬件生成 427Hz 节律
+            document.getElementById('curtain').style.display = 'none';
+            document.getElementById('app').style.display = 'flex';
+            
+            // 硬件生成极微弱的 427Hz，作为一种“体感”而非响动
             let osc = aCtx.createOscillator();
             let g = aCtx.createGain();
             osc.frequency.value = 427;
-            g.gain.value = 0.05;
+            g.gain.value = 0.02;
             osc.connect(g); g.connect(aCtx.destination);
             osc.start();
         }
@@ -58,23 +58,37 @@
         const ipt = document.getElementById('ipt');
         ipt.addEventListener('input', (e) => {
             let val = e.target.value;
-            // 交互线增强：输入过程中随机响起悄悄话
-            if (val.length > 0 && val.length % 5 === 0) {
-                let whisper = document.getElementById('v2');
-                whisper.volume = 0.4;
-                whisper.play().catch(()=>{});
-                document.getElementById('narrative').innerText = phrases[Math.floor(Math.random() * phrases.length)];
+            
+            // 随着输入，文字在提示，但声音还没爆发
+            if (val.length > 0 && val.length % 3 === 0) {
+                document.getElementById('hint-text').innerText = hints[Math.floor(Math.random() * hints.length)];
+                document.getElementById('hint-text').style.opacity = 0.8;
+                setTimeout(() => document.getElementById('hint-text').style.opacity = 0.4, 1000);
             }
 
-            // 只有当他输入“我也喜欢你啊”或者字数超过 12 个字，才进入最终爆发
-            if (val.includes("我也喜欢你啊") || val.length > 12) {
+            // 只有当他完整输入了那句最关键的话
+            if (val === "我也喜欢你啊") {
                 setTimeout(() => {
-                    document.getElementById('main').style.display = 'none';
-                    document.getElementById('joy-result').style.display = 'block';
-                    let likeVoice = document.getElementById('v1');
-                    likeVoice.volume = 1.0;
-                    likeVoice.play(); // 此时必须响起他亲口说的告白
-                }, 800);
+                    document.getElementById('app').style.display = 'none';
+                    document.getElementById('final-scene').style.display = 'block';
+                    
+                    // 声音层级爆发：
+                    // 1. 先响起那首《The Loneliest Girl》
+                    let s = document.getElementById('v_song');
+                    s.volume = 0.4; s.play();
+                    
+                    // 2. 3秒后，叠加上他那句羞涩的“我也喜欢你”
+                    setTimeout(() => {
+                        let sl = document.getElementById('v_sco_like');
+                        sl.volume = 1.0; sl.play();
+                    }, 3000);
+
+                    // 3. 最后，叠加上你那段温柔的照顾
+                    setTimeout(() => {
+                        let m = document.getElementById('v_mother');
+                        m.volume = 0.8; m.play();
+                    }, 8000);
+                }, 1000);
             }
         });
     </script>
