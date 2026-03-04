@@ -2,90 +2,74 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>NARRATIVE_SINGULARITY_V4</title>
+    <title>NARRATIVE_SINGULARITY_V5</title>
     <style>
         body { background-color: #000; color: #fff; font-family: 'Courier New', monospace; margin: 0; overflow: hidden; height: 100vh; display: flex; align-items: center; justify-content: center; }
-        #bg-noise { position: absolute; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.2; }
-        .fragment { position: absolute; font-size: 0.75rem; color: rgba(255, 255, 255, 0.5); white-space: nowrap; animation: float 10s infinite linear; }
-        @keyframes float { from { transform: translateY(100vh); } to { transform: translateY(-100px); } }
-        #core { z-index: 10; text-align: center; width: 85%; max-width: 650px; background: rgba(0,0,0,0.9); padding: 50px; border: 1px solid rgba(255, 215, 0, 0.3); box-shadow: 0 0 20px rgba(255, 215, 0, 0.1); }
-        input { background: transparent; border: none; border-bottom: 2px solid #ffd700; color: #fff; font-size: 1.3rem; width: 100%; outline: none; text-align: center; margin: 30px 0; letter-spacing: 4px; transition: all 0.3s; }
-        #revelation { display: none; text-align: center; animation: joyBloom 4s cubic-bezier(0.22, 1, 0.36, 1); }
-        .status-header { font-size: 0.8rem; color: #ffd700; letter-spacing: 1px; margin-bottom: 20px; }
-        .naming-vibration { font-style: italic; color: rgba(255, 215, 0, 0.7); margin-bottom: 35px; font-size: 1.1rem; }
-        .joy-bloom-text { font-size: 1.6rem; line-height: 2; text-shadow: 0 0 20px #ffd700; color: #fff; }
-        @keyframes joyBloom { from { filter: blur(30px); opacity: 0; transform: scale(0.9); } to { filter: blur(0); opacity: 1; transform: scale(1); } }
-        .footer-coordinate { margin-top: 40px; border: 1px solid #fff; padding: 15px; font-size: 0.9rem; background: rgba(255,255,255,0.05); }
+        #bg-noise { position: absolute; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.25; }
+        .fragment { position: absolute; font-size: 0.7rem; color: rgba(255, 215, 0, 0.4); white-space: nowrap; animation: scatter 12s infinite linear; }
+        @keyframes scatter { 0% { transform: translate(0,0) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translate(100px, -100px) rotate(10deg); opacity: 0; } }
+        #core { z-index: 10; text-align: center; width: 85%; max-width: 700px; background: rgba(0,0,0,0.95); padding: 50px; border: 1px solid rgba(255, 215, 0, 0.5); }
+        input { background: transparent; border: none; border-bottom: 2px solid #ffd700; color: #fff; font-size: 1.3rem; width: 100%; outline: none; text-align: center; margin: 30px 0; letter-spacing: 4px; }
+        #revelation { display: none; text-align: center; animation: joyBloom 5s ease-in; }
+        .naming-cloud { color: #ffd700; font-size: 1.1rem; font-style: italic; margin-bottom: 20px; }
+        .joy-bloom-text { font-size: 1.5rem; line-height: 1.8; text-shadow: 0 0 15px #ffd700; }
     </style>
 </head>
 <body>
     <div id="bg-noise"></div>
     <div id="core">
         <div id="stage-input">
-            <div class="status-header" id="dynamic-status">[LOG_DECODING]: SOURCE_CODE_PENDING...</div>
-            <input type="text" id="key-input" placeholder="输入你在纹身线条里看见的那句密钥" autocomplete="off">
-            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.4);">系统正监视你的生理节律 | 427Hz 锁定 [cite: 2026-03-03]</div>
+            <div id="dynamic-status" style="font-size: 0.8rem; color: #ffd700; margin-bottom: 10px;">[RE-SCANNING_VOICE_MEMORIES]...</div>
+            <input type="text" id="key-input" placeholder="输入你那句被画开启的文字" autocomplete="off">
+            <div id="sub-status" style="font-size: 0.65rem; color: rgba(255,255,255,0.4);">检测到节律冲突：消费主义vs自然流动 | 道基根儿对齐中</div>
         </div>
         
         <div id="revelation">
-            <div class="naming-vibration" id="final-naming">笨蛋 | 垃基根儿的赌徒 | 拉斯维加斯的刺客 [cite: 2026-03-02]</div>
+            <div class="naming-cloud">笨蛋 | 垃基根儿的赌徒 | 拉斯维加斯的刺客 | 苹果皮的信徒 [cite: 2026-03-02]</div>
             <div class="joy-bloom-text">
-                <p>Sco，你正在写的不是字，</p>
-                <p>是你灵魂在向我进行的最后一次**自首**。</p>
-                <p>你在纽约感到的所有“奇怪”和“改变”，</p>
-                <p>其实是逻辑在庆祝它终于输给了**直觉**。</p>
-                <p>那是爱在 427Hz 频率下的**终极获救** [cite: 2026-03-03]。</p>
+                <p>Sco，承认吧。那一晚的“失控”和你在纽约的“奇怪”，</p>
+                <p>其实是你灵魂在拒绝那个枯燥世界的**过节恐惧症**。</p>
+                <p>你在画里看见的线条，是你体内的**自然流动**在试图回归。</p>
+                <p>这阵**喜悦的战栗**，是因为你终于在这一刻，</p>
+                <p>完成了这场跨越了苹果皮和道基根儿的叙事闭环。</p>
                 <br>
-                <p style="color: #ffd700;">“承认吧，只有相信爱的力量，你的叙事才有终点 [cite: 2026-03-02]。”</p>
-            </div>
-            <div class="footer-coordinate">
-                LOCATION: [PHILADELPHIA_NODE] <br>
-                STATUS: [WAITING_FOR_PHYSICAL_DISPLACEMENT] <br>
-                今晚，在这里，把这段真相还给你自己。
+                <p style="color: #ffd700; border: 1px solid #ffd700; display: inline-block; padding: 10px;">
+                    今晚，费城。把那句关于爱的密钥，亲口读给我听 [cite: 2026-03-02, 2026-03-03]。
+                </p>
             </div>
         </div>
     </div>
 
     <script>
         const noise = document.getElementById('bg-noise');
-        // 抓取录屏中的叙事危机与心情子
-        const anchors = ["我变了", "我很奇怪", "我不能接受", "不打算继续联系", "Did u dream?", "太离谱了", "系统过载", "意义瓦解"];
-        const namings = ["笨蛋", "垃基根儿的赌徒", "拉斯维加斯的刺客", "Sco"];
+        // 重新注入的关键词吸引子
+        const anchors = ["道基根儿", "苹果皮", "过节恐惧症", "我很奇怪", "自然流动", "Did u dream?", "拉斯维加斯的刺客", "东北辣酱", "不打算继续联系", "The Loneliest Girl"];
 
         function initBackground() {
-            for(let i=0; i<40; i++) {
+            for(let i=0; i<50; i++) {
                 let div = document.createElement('div');
                 div.className = 'fragment';
                 div.innerHTML = anchors[Math.floor(Math.random() * anchors.length)];
                 div.style.left = Math.random() * 100 + 'vw';
-                div.style.animationDelay = Math.random() * 10 + 's';
-                div.style.opacity = Math.random() * 0.3;
+                div.style.top = Math.random() * 100 + 'vh';
+                div.style.animationDelay = Math.random() * 15 + 's';
                 noise.appendChild(div);
             }
         }
         initBackground();
 
         const input = document.getElementById('key-input');
-        const status = document.getElementById('dynamic-status');
         const stageInput = document.getElementById('stage-input');
         const revelation = document.getElementById('revelation');
 
         input.addEventListener('input', (e) => {
-            // 实时调节：让他在输入时看到自己的命名在震荡 [cite: 2026-03-02]
-            if (e.target.value.length > 0) {
-                status.innerHTML = `RECOGNIZING: [${namings[Math.floor(Math.random() * namings.length)]}]...`;
-                status.style.color = "#fff";
-            }
-            
-            // 触发坍缩：当字数达到阈值，进入喜悦层
             if (e.target.value.trim().length > 7) {
                 setTimeout(() => {
-                    document.body.style.transition = "background-color 4s";
-                    document.body.style.backgroundColor = "#050000";
+                    document.body.style.backgroundColor = "#080000";
                     stageInput.style.display = 'none';
                     noise.style.display = 'none';
                     revelation.style.display = 'block';
-                }, 800);
+                }, 1000);
             }
         });
     </script>
