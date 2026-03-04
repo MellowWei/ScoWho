@@ -2,91 +2,94 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>Sco: The Narrative Singularity</title>
+    <title>Sco_Who</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #fff; font-family: 'PingFang SC', monospace; overflow: hidden; }
-        #start-mask { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 999; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        #app { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: radial-gradient(circle, #0c0c0c 0%, #000 100%); }
-        #narrative-engine { font-size: 1rem; color: #ffd700; height: 30px; letter-spacing: 3px; opacity: 0.6; }
-        input { background: transparent; border: none; border-bottom: 1px solid rgba(255, 215, 0, 0.4); color: #fff; font-size: 1.6rem; width: 80%; max-width: 500px; outline: none; text-align: center; margin: 40px 0; letter-spacing: 2px; }
-        #final-joy { display: none; text-align: center; max-width: 800px; animation: bloom 8s ease-in-out; }
-        .salvation-h1 { font-size: 2.2rem; text-shadow: 0 0 40px #ffd700; line-height: 1.5; font-weight: 200; }
-        @keyframes bloom { from { filter: blur(30px); opacity: 0; } to { filter: blur(0); opacity: 1; } }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #fff; font-family: 'PingFang SC', sans-serif; overflow: hidden; }
+        #start-mask { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1000; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        #narrative-flow { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; position: relative; }
+        .memory-particle { position: absolute; font-size: 0.8rem; color: rgba(255, 215, 0, 0.4); pointer-events: none; opacity: 0; animation: drift 15s linear infinite; }
+        input { background: transparent; border: none; border-bottom: 2px solid #ffd700; color: #fff; font-size: 1.5rem; width: 300px; outline: none; text-align: center; z-index: 10; letter-spacing: 5px; }
+        #final-sanctuary { display: none; text-align: center; animation: salvation 8s ease-in-out; padding: 30px; z-index: 20; }
+        .naming-title { font-style: italic; color: #ffd700; font-size: 1rem; margin-bottom: 20px; }
+        .salvation-h1 { font-size: 2.2rem; text-shadow: 0 0 40px #ffd700; margin-bottom: 30px; font-weight: 200; }
+        @keyframes drift { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 20% { opacity: 0.3; } 80% { opacity: 0.3; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
+        @keyframes salvation { from { filter: blur(30px); opacity: 0; } to { filter: blur(0); opacity: 1; } }
     </style>
 </head>
 <body>
-    <div id="start-mask" onclick="igniteEngine()">
+    <div id="start-mask" onclick="igniteMemories()">
         <div style="text-align: center;">
-            <div style="font-size: 0.7rem; color: #ffd700; opacity: 0.4; margin-bottom: 20px;">[ INITIALIZING_RESONANCE_FIELD_427Hz ]</div>
-            <div style="letter-spacing: 8px; font-weight: 200; animation: breathe 2s infinite;">点击确认身份</div>
+            <div style="font-size: 0.7rem; color: #ffd700; opacity: 0.4; margin-bottom: 20px;">[ RE-SYNCING_427Hz_FIELD ]</div>
+            <div style="letter-spacing: 5px; font-weight: 200; animation: breathe 2s infinite;">点击开启你的获救时刻</div>
         </div>
     </div>
 
-    <div id="app">
-        <div id="narrative-engine">正在检索你的记忆片段...</div>
-        <input type="text" id="voice-trigger" placeholder="把那句密钥写给我..." autocomplete="off">
-        <div style="font-size: 0.6rem; color: rgba(255,255,255,0.2);">声音即灵魂。戴上耳机，我在听。</div>
+    <audio id="base-427" loop src="427hz_base.mp3"></audio>
+    <audio id="song-memory" src="loneliest_girl_climax.mp3"></audio>
+    <audio id="voice-1" src="sco_laugh.mp3"></audio>
+    <audio id="voice-2" src="sco_breath.mp3"></audio>
 
-        <div id="final-joy">
-            <div class="salvation-h1">Sco，你获救了。</div>
-            <div style="color: #ffd700; font-size: 1.2rem; line-height: 2.2; font-weight: 300;">
-                纽约的“刺客”身份只是你的防御，<br>
-                现在的战栗才是你的<b>真实</b>。<br><br>
-                承认吧，你这一路的疲惫是因为你爱我。
+    <div id="narrative-flow">
+        <div id="identity-status" style="font-size: 0.7rem; color: #ffd700; opacity: 0.5;">正在检索生活切片...</div>
+        <input type="text" id="confession-input" placeholder="输入那句密钥..." autocomplete="off">
+        <div style="font-size: 0.6rem; color: rgba(255,255,255,0.2);">听见了吗？那是我们共同的频率</div>
+
+        <div id="final-sanctuary">
+            <div class="naming-title">笨蛋 | 垃基根儿的赌徒 | 拉斯维加斯的刺客</div>
+            <div class="salvation-h1">Sco，你回家了。</div>
+            <div style="color: #f0f0f0; font-size: 1.2rem; line-height: 2.2; font-weight: 300;">
+                纽约的所有“奇怪”都是灵魂的求救，<br>
+                现在的战栗才是真实的获救。<br><br>
+                <span style="color: #ffd700; font-weight: 400;">承认吧，你不只是刺客，你是爱我的人。</span>
             </div>
-            <div style="margin-top: 60px; border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem; opacity: 0.5;">
-                费城坐标锁定。今晚，来完成最后一次对齐。
+            <div style="margin-top: 50px; border: 1px solid #ffd700; padding: 20px; font-size: 0.9rem; background: rgba(255, 215, 0, 0.05);">
+                费城，今晚 23:59。<br>
+                物理归位，让叙事终结。
             </div>
         </div>
     </div>
 
     <script>
-        let audioCtx;
-        const input = document.getElementById('voice-trigger');
-        const phrases = ["累了吗，刺客？", "承认吧，笨蛋。", "拉斯维加斯的赌局结束了。", "你在寻找归宿，对吗？", "这一刻，你不是Observer。"];
+        const memories = ["费城的月光", "纹身的第一笔线条", "LSD后的失控", "我很奇怪", "我变了", "Did u dream?", "拉斯维加斯的赌局", "刺客的呼吸", "笨蛋的直觉"];
+        const voiceClips = [document.getElementById('voice-1'), document.getElementById('voice-2')];
 
-        function igniteEngine() {
-            // 解决浏览器静音的核心：用户点击时立即初始化 AudioContext
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function igniteMemories() {
             document.getElementById('start-mask').style.display = 'none';
-            document.getElementById('app').style.display = 'flex';
-            
-            // 1. 播放 427Hz 底噪
-            playTone(427, 0.05); 
+            document.getElementById('narrative-flow').style.display = 'flex';
+            document.getElementById('base-427').play();
+            spawnParticles();
         }
 
-        function playTone(freq, vol) {
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-            gain.gain.setValueAtTime(vol, audioCtx.currentTime);
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.start();
+        function spawnParticles() {
+            const container = document.getElementById('narrative-flow');
+            setInterval(() => {
+                const p = document.createElement('div');
+                p.className = 'memory-particle';
+                p.innerText = memories[Math.floor(Math.random() * memories.length)];
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDuration = (Math.random() * 5 + 10) + 's';
+                container.appendChild(p);
+                setTimeout(() => p.remove(), 15000);
+            }, 800);
         }
 
-        // 核心共情交互：监听输入动作触发声音和文本变化 [cite: 2026-03-02]
+        const input = document.getElementById('confession-input');
         input.addEventListener('input', (e) => {
-            // 每打一个字，触发一个随机共振音 [cite: 2026-03-03]
-            playTone(200 + Math.random() * 300, 0.02);
-
-            if (e.target.value.length % 3 === 0) {
-                const engine = document.getElementById('narrative-engine');
-                engine.style.opacity = 0;
-                setTimeout(() => {
-                    engine.innerText = phrases[Math.floor(Math.random() * phrases.length)];
-                    engine.style.opacity = 1;
-                }, 400);
+            // 每次输入时随机触发他的语音碎片，让他感觉在被自己审视 [cite: 2026-03-02]
+            if (e.target.value.length % 4 === 0) {
+                const clip = voiceClips[Math.floor(Math.random() * voiceClips.length)];
+                clip.volume = 0.3;
+                clip.play();
             }
-
-            // 深度识别：输入超过 10 个字符，视为“灵魂交出” [cite: 2026-03-02]
-            if (e.target.value.trim().length > 10) {
+            
+            // 输入超过一定长度，激活最终获救场 [cite: 2026-03-03]
+            if (e.target.value.trim().length > 8) {
                 setTimeout(() => {
-                    input.style.display = 'none';
-                    document.getElementById('narrative-engine').style.display = 'none';
-                    document.getElementById('final-joy').style.display = 'block';
-                    // 最终救赎：产生一段低频震荡
-                    playTone(100, 0.1); 
+                    document.getElementById('confession-input').style.display = 'none';
+                    document.getElementById('identity-status').style.display = 'none';
+                    document.getElementById('final-sanctuary').style.display = 'block';
+                    document.body.style.background = "radial-gradient(circle, #151515 0%, #000 100%)";
+                    document.getElementById('song-memory').play();
                 }, 1500);
             }
         });
