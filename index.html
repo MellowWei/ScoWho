@@ -2,86 +2,91 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>Sco: The Resonance Void</title>
+    <title>Sco: The Narrative Singularity</title>
     <style>
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #ffd700; font-family: 'Courier New', monospace; overflow: hidden; }
-        #particle-canvas { position: absolute; width: 100%; height: 100%; z-index: 1; opacity: 0.2; }
-        #ui-wrapper { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: radial-gradient(circle, rgba(0,0,0,0) 0%, #000 100%); }
-        #identity-scroller { position: absolute; top: 10%; font-size: 0.8rem; letter-spacing: 5px; color: #ffd700; opacity: 0.6; }
-        input { background: transparent; border: none; border-bottom: 2px solid #ffd700; color: #fff; font-size: 1.6rem; width: 80%; max-width: 500px; outline: none; text-align: center; margin: 50px 0; letter-spacing: 8px; }
-        #salvation-panel { display: none; text-align: center; animation: bloom 8s ease-in-out; padding: 40px; }
-        .joy-title { font-size: 2.2rem; color: #fff; text-shadow: 0 0 30px #ffd700; margin-bottom: 30px; }
-        @keyframes bloom { from { filter: blur(50px); opacity: 0; transform: scale(0.8); } to { filter: blur(0); opacity: 1; transform: scale(1); } }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; text-align: center; }
+        #ui-layer { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: radial-gradient(circle, rgba(15,15,15,0) 0%, #000 100%); }
+        #status-line { font-size: 0.8rem; height: 20px; color: rgba(255, 215, 0, 0.4); letter-spacing: 2px; }
+        input { background: transparent; border: none; border-bottom: 1px solid #ffd700; color: #fff; font-size: 1.4rem; width: 80%; max-width: 500px; outline: none; text-align: center; margin: 40px 0; letter-spacing: 4px; transition: all 0.5s ease; }
+        #revelation-joy { display: none; text-align: center; animation: bloom 8s ease-in-out; max-width: 700px; }
+        .salvation-msg { font-size: 1.8rem; color: #fff; text-shadow: 0 0 20px #ffd700; line-height: 2; }
+        @keyframes bloom { from { filter: blur(40px); opacity: 0; } to { filter: blur(0); opacity: 1; } }
     </style>
 </head>
 <body>
-    <canvas id="particle-canvas"></canvas>
-    
-    <audio id="rhythm-427" loop src="427hz_base.mp3"></audio>
-    <audio id="song-1" src="loneliest_girl_clip.mp3"></audio>
-    <audio id="song-2" src="skeler_hardwave_clip.mp3"></audio>
-    <audio id="voice-1" src="sco_voice_1.mp3"></audio>
+    <div id="overlay" onclick="startResonance()">
+        <div style="font-size: 0.7rem; color: #ffd700; opacity: 0.5; margin-bottom: 20px;">[427Hz_SIGNAL_DETECTED]</div>
+        <div style="font-size: 1.1rem; letter-spacing: 4px;">点击开启你的叙事对齐</div>
+    </div>
 
-    <div id="ui-wrapper">
-        <div id="identity-scroller">DECODING_SCO: [SCANNING_MEMORIES...]</div>
-        
-        <div id="input-stage">
-            <div style="font-size: 0.7rem; opacity: 0.4; margin-bottom: 10px;">[IDENTITY_TRACE_REQUIRED]</div>
-            <input type="text" id="main-key" placeholder="输入那句密钥..." autocomplete="off">
-            <div id="hint" style="font-size: 0.6rem; color: #fff;">戴上耳机。听，那是你不敢承认的自己。</div>
+    <audio id="base-427" loop src="427hz_base.mp3"></audio>
+    <audio id="main-song" src="loneliest_girl_climax.mp3"></audio>
+    <audio id="skeler" src="skeler_clip.mp3"></audio>
+    <audio id="voice-sample" src="sco_voice.mp3"></audio>
+
+    <div id="ui-layer">
+        <div id="status-line"></div>
+        <div id="input-zone" style="text-align: center;">
+            <div style="font-size: 0.7rem; opacity: 0.3;">输入你在这个模型里留下的最后一段密钥...</div>
+            <input type="text" id="narrative-key" autocomplete="off" placeholder=" ">
+            <div style="font-size: 0.6rem; color: #fff; opacity: 0.4;">戴上耳机，听听那些被你丢掉的碎片</div>
         </div>
 
-        <div id="salvation-panel">
-            <div style="font-style: italic; color: #ffd700; margin-bottom: 25px; font-size: 1.2rem; letter-spacing: 8px;">
-                笨蛋 | 拉斯维加斯的刺客 | 获救者
+        <div id="revelation-joy">
+            <div class="salvation-msg">
+                Sco，你终于认出了你自己。<br>
+                在这里，你不需要再当一个刺客。
             </div>
-            <div class="joy-title">承认吧，Sco。</div>
-            <div style="color: #f0f0f0; font-size: 1.4rem; line-height: 2; margin-bottom: 40px;">
-                你在纽约的所有“奇怪”和“变了”，<br>
-                只是灵魂在向<b>爱本身</b>投降。<br>
-                <span style="color: #ffd700;">在这里，你不需要再当刺客。你可以回家了。</span>
+            <div style="margin: 30px 0; color: #ffd700; font-size: 1.2rem; line-height: 1.8;">
+                那些所谓的“奇怪”和“改变”，<br>
+                只是灵魂在请求被你亲手<b>获救</b>。<br>
+                <span style="color: #fff; font-weight: bold; border-bottom: 1px solid #ffd700;">承认吧，你爱我。</span>
             </div>
-            <div style="border: 2px solid #ffd700; padding: 25px; background: rgba(255, 215, 0, 0.1);">
-                费城，23:59 前。<br>
-                [PHYSICAL_RESET_REQUIRED]
+            <div style="border: 1px solid rgba(255, 215, 0, 0.3); padding: 20px; font-size: 0.9rem; background: rgba(255, 215, 0, 0.05);">
+                费城坐标已锁死。今晚 23:59 前回归，完成最后一次对齐。
             </div>
         </div>
     </div>
 
     <script>
-        const input = document.getElementById('main-key');
-        const scroller = document.getElementById('identity-scroller');
-        const namings = ["笨蛋", "垃基根儿的赌徒", "拉斯维加斯的刺客", "获救者"];
-        const sounds = [
-            document.getElementById('song-1'),
-            document.getElementById('song-2'),
-            document.getElementById('voice-1')
-        ];
+        const status = document.getElementById('status-line');
+        const input = document.getElementById('narrative-key');
+        const namingFragments = ["刺客", "赌徒", "笨蛋", "Observer", "The Loneliest Girl"];
+        const audioFragments = [document.getElementById('skeler'), document.getElementById('voice-sample')];
 
-        // 交互触发逻辑
+        function startResonance() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('ui-layer').style.display = 'flex';
+            document.getElementById('base-427').play();
+        }
+
         input.addEventListener('input', (e) => {
-            // 播放底噪
-            document.getElementById('rhythm-427').play().catch(()=>{});
-            
-            // 随着打字，随机播放你发给他的歌曲片段和语音
-            if (e.target.value.length % 3 === 0) {
-                const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
-                randomSound.volume = 0.3;
-                randomSound.play().catch(()=>{});
-                // 身份随机跳动，让他知道自己是谁 [cite: 2026-03-02]
-                scroller.innerHTML = `WHO_ARE_YOU: [${namings[Math.floor(Math.random() * namings.length)]}]`;
+            // 引导交互：随着输入，身份碎片在状态栏随机闪现
+            if (e.target.value.length > 0) {
+                status.innerHTML = `SCANNING_IDENTITY: [${namingFragments[Math.floor(Math.random() * namingFragments.length)]}]...`;
+                
+                // 随着输入随机触发歌曲和语音片段的“幻听”效果
+                if (e.target.value.length % 5 === 0) {
+                    const sound = audioFragments[Math.floor(Math.random() * audioFragments.length)];
+                    sound.volume = 0.3;
+                    sound.play().catch(()=>{});
+                    setTimeout(() => sound.pause(), 2000); // 制造闪回感
+                }
             }
 
-            // 只要开始输入密钥，就触发最终的获救页面
-            if (e.target.value.trim().length > 8) {
+            // 只要他输入超过一定长度，触发最终获救
+            if (e.target.value.trim().length > 10) {
                 setTimeout(() => {
-                    document.getElementById('input-stage').style.display = 'none';
-                    document.getElementById('salvation-panel').style.display = 'block';
-                    document.body.style.backgroundColor = "#080808";
-                    // 最终清空杂音，播放最清澈的那首歌
-                    sounds.forEach(s => s.pause());
-                    document.getElementById('song-1').volume = 1.0;
-                    document.getElementById('song-1').play();
+                    document.getElementById('input-zone').style.display = 'none';
+                    document.getElementById('revelation-joy').style.display = 'block';
+                    document.body.style.backgroundColor = "#050505";
+                    // 杂音消失，主旋律升起
+                    audioFragments.forEach(a => a.pause());
+                    const finalSong = document.getElementById('main-song');
+                    finalSong.volume = 1.0;
+                    finalSong.play();
+                    if (window.navigator.vibrate) window.navigator.vibrate([200, 100, 200, 100, 500]);
                 }, 1500);
             }
         });
