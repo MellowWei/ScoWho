@@ -2,88 +2,91 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>THE_SANCTUARY_LOG</title>
+    <title>Sco: The Identity Mirror</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #ffd700; font-family: 'Courier New', monospace; overflow: hidden; transition: background 4s ease; }
-        #particle-field { position: absolute; width: 100%; height: 100%; z-index: 1; }
-        .logic-fragment { position: absolute; pointer-events: none; opacity: 0; font-size: 0.7rem; color: #fff; animation: drift 25s linear infinite; }
-        @keyframes drift {
-            0% { transform: translate(var(--x1), 110vh); opacity: 0; }
-            15% { opacity: 0.2; }
-            85% { opacity: 0.2; }
-            100% { transform: translate(var(--x2), -10vh); opacity: 0; }
-        }
-        #ui-container { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
-        #input-panel { text-align: center; transition: opacity 1s ease; }
-        input { background: transparent; border: none; border-bottom: 1px solid #ffd700; color: #fff; font-size: 1.4rem; width: 400px; outline: none; text-align: center; margin-top: 20px; letter-spacing: 3px; }
-        #revelation-joy { display: none; text-align: center; animation: bloom 6s ease-out; max-width: 800px; }
-        @keyframes bloom { from { filter: blur(30px); opacity: 0; transform: scale(1.1); } to { filter: blur(0); opacity: 1; transform: scale(1); } }
-        .salvation-text { font-size: 1.8rem; color: #fff; text-shadow: 0 0 20px rgba(255, 215, 0, 0.8); line-height: 2; margin: 30px 0; }
-        .naming-badge { font-style: italic; color: #ffd700; letter-spacing: 5px; margin-bottom: 40px; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #ffd700; font-family: 'Courier New', monospace; overflow: hidden; transition: all 2s ease; }
+        #matrix-bg { position: absolute; width: 100%; height: 100%; z-index: 1; opacity: 0.15; pointer-events: none; }
+        #ui-layer { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: radial-gradient(circle, transparent 0%, #000 100%); }
+        #status-bar { position: absolute; top: 30px; font-size: 0.9rem; letter-spacing: 3px; color: rgba(255, 215, 0, 0.6); }
+        input { background: transparent; border: none; border-bottom: 2px solid #ffd700; color: #fff; font-size: 1.5rem; width: 80%; max-width: 500px; outline: none; text-align: center; margin: 40px 0; letter-spacing: 5px; }
+        #salvation-field { display: none; text-align: center; padding: 40px; animation: bloom 8s ease-out; }
+        .joy-bloom { font-size: 2rem; color: #fff; text-shadow: 0 0 25px #ffd700; line-height: 1.8; margin-bottom: 30px; }
+        @keyframes bloom { from { filter: blur(40px); opacity: 0; } to { filter: blur(0); opacity: 1; } }
     </style>
 </head>
 <body>
-    <div id="particle-field"></div>
-    
-    <div id="ui-container">
-        <div id="input-panel">
-            <div style="font-size: 0.8rem; opacity: 0.5; letter-spacing: 2px;">[RECOVERY_MODE: ACTIVE]</div>
-            <input type="text" id="key-input" placeholder="输入你手写的、指向我的那句密钥..." autocomplete="off">
-            <div style="margin-top: 20px; font-size: 0.6rem; color: rgba(255, 255, 255, 0.4);">如果你累了，就在这里放下逻辑</div>
+    <div id="matrix-bg"></div>
+    <audio id="bg-rhythm" loop><source src="427hz_rhythm.mp3" type="audio/mpeg"></audio>
+    <audio id="salvation-song"><source src="loneliest_girl_climax.mp3" type="audio/mpeg"></audio>
+
+    <div id="ui-layer">
+        <div id="status-bar">DECODING_IDENTITY: [WAITING_FOR_DATA]</div>
+        
+        <div id="interaction-zone">
+            <div style="font-size: 0.8rem; opacity: 0.5;">[IDENTITY_TRACE_REQUIRED]</div>
+            <input type="text" id="key-input" placeholder="输入你在纹身里看见的那句密钥..." autocomplete="off">
+            <div style="font-size: 0.6rem; margin-top: 10px; color: #fff;">戴上耳机，让 427Hz 带你回家</div>
         </div>
 
-        <div id="revelation-joy">
-            <div class="naming-badge">笨蛋 | 垃基根儿的赌徒 | 拉斯维加斯的刺客</div>
-            <div class="salvation-text">
-                Sco，你写下的不是文字，<br>
-                是你给自己的一份<b>赦免令</b>。
+        <div id="salvation-field">
+            <div style="font-style: italic; color: #ffd700; margin-bottom: 20px; font-size: 1.2rem; letter-spacing: 10px;">
+                笨蛋 | 垃基根儿的赌徒 | 拉斯维加斯的刺客
             </div>
-            <div style="color: #f0f0f0; font-size: 1.2rem; line-height: 1.8; margin-bottom: 40px;">
-                在纽约感到的所有失控与奇怪，<br>
-                其实是你的灵魂在向<b>爱本身</b>归降。<br>
-                <span style="color: #ffd700;">在这里，你可以安全地承认——你爱我。</span>
+            <div class="joy-bloom">
+                Sco，你终于认出你自己了吗？<br>
+                那个在纽约流浪的“刺客”已经死了。
             </div>
-            <div style="border: 1px solid #ffd700; padding: 20px; background: rgba(255, 215, 0, 0.05);">
-                费城的灯火已为你点亮。今晚，来完成最后一次对齐。
+            <div style="color: #f0f0f0; font-size: 1.3rem; line-height: 2; margin-bottom: 50px;">
+                所有的逃避、冷漠和奇怪，<br>
+                都是为了在这一刻，向<b>爱本身</b>投降。<br>
+                <span style="color: #ffd700; font-weight: bold;">承认吧，你这一路的战栗，是因为你爱我。</span>
+            </div>
+            <div style="border: 2px solid #ffd700; padding: 25px; background: rgba(255, 215, 0, 0.1);">
+                我在费城。今晚 23:59 前，物理归位，领取你的救赎。
             </div>
         </div>
     </div>
 
     <script>
-        // 抓取关键互动资料作为背景碎片
-        const memoryFragments = [
-            "我变了", "我很奇怪", "Did u dream?", "The Loneliest Girl", "427Hz", 
-            "不能接受", "断开连接", "太离谱了", "笨蛋", "刺客", "赌徒", "下不来台"
-        ];
+        const phrases = ["我变了", "我很奇怪", "Did u dream?", "下不来台", "笨蛋", "刺客", "赌徒", "The Loneliest Girl"];
+        const namings = ["笨蛋", "垃基根儿的赌徒", "拉斯维加斯的刺客"];
+        const input = document.getElementById('key-input');
+        const statusBar = document.getElementById('status-bar');
 
-        function initFragments() {
-            const field = document.getElementById('particle-field');
-            for(let i=0; i<30; i++) {
+        // 初始化背景粒子：让他感觉信息“到处都是”
+        function initField() {
+            const bg = document.getElementById('matrix-bg');
+            for(let i=0; i<50; i++) {
                 const div = document.createElement('div');
-                div.className = 'logic-fragment';
-                div.innerHTML = memoryFragments[Math.floor(Math.random() * memoryFragments.length)];
-                div.style.setProperty('--x1', Math.random() * 100 + 'vw');
-                div.style.setProperty('--x2', (Math.random() * 20 + 40) + 'vw');
-                div.style.left = '0';
-                div.style.animationDelay = (Math.random() * 10) + 's';
-                field.appendChild(div);
+                div.style.position = 'absolute';
+                div.style.left = Math.random() * 100 + 'vw';
+                div.style.top = Math.random() * 100 + 'vh';
+                div.style.fontSize = (Math.random() * 0.5 + 0.5) + 'rem';
+                div.style.color = 'rgba(255,255,255,0.2)';
+                div.innerHTML = phrases[Math.floor(Math.random() * phrases.length)];
+                bg.appendChild(div);
             }
         }
-        initFragments();
+        initField();
 
-        const input = document.getElementById('key-input');
         input.addEventListener('input', (e) => {
-            // 输入超过8个字符即视为“卸下防线” [cite: 2026-03-02]
-            if (e.target.value.trim().length > 8) {
+            // 第一次输入时触发 427Hz 播放
+            document.getElementById('bg-rhythm').play().catch(()=>{});
+            
+            // 随机变换命名状态，让他知道自己是谁
+            if (e.target.value.length > 0) {
+                statusBar.innerHTML = `IDENTIFIED: [${namings[Math.floor(Math.random() * namings.length)]}]`;
+            }
+
+            // 只要产生输入行为且超过 5 个字，触发终极获救场
+            if (e.target.value.trim().length > 5) {
                 setTimeout(() => {
-                    document.getElementById('input-panel').style.opacity = '0';
-                    setTimeout(() => {
-                        document.getElementById('input-panel').style.display = 'none';
-                        document.getElementById('revelation-joy').style.display = 'block';
-                        document.body.style.background = "radial-gradient(circle, #1a1a1a 0%, #000 100%)";
-                        if (window.navigator.vibrate) window.navigator.vibrate([200, 100, 500]);
-                    }, 1000);
-                }, 800);
+                    document.getElementById('interaction-zone').style.display = 'none';
+                    document.getElementById('salvation-field').style.display = 'block';
+                    document.body.style.backgroundColor = "#0a0a0a";
+                    document.getElementById('salvation-song').play();
+                    if (window.navigator.vibrate) window.navigator.vibrate([300, 100, 300, 100, 500]);
+                }, 1200);
             }
         });
     </script>
