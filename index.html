@@ -2,96 +2,74 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>Sco: The Narrative Sanctuary</title>
+    <title>THE_CONFESSION</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #fff; font-family: 'PingFang SC', monospace; overflow: hidden; }
-        #curtain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1000; display: flex; align-items: center; justify-content: center; cursor: pointer; text-align: center; }
-        #app { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; position: relative; }
-        .memory-particle { position: absolute; font-size: 0.8rem; color: rgba(255, 215, 0, 0.4); pointer-events: none; opacity: 0; animation: float 12s linear infinite; }
-        input { background: transparent; border: none; border-bottom: 2px solid #ffd700; color: #fff; font-size: 1.5rem; width: 350px; outline: none; text-align: center; margin: 40px 0; letter-spacing: 5px; z-index: 20; }
-        #salvation { display: none; text-align: center; animation: bloom 8s ease-in-out; max-width: 600px; z-index: 30; }
-        @keyframes bloom { from { filter: blur(40px); opacity: 0; transform: scale(0.9); } to { filter: blur(0); opacity: 1; transform: scale(1); } }
-        @keyframes float { 0% { transform: translateY(110vh); opacity: 0; } 20% { opacity: 0.4; } 80% { opacity: 0.4; } 100% { transform: translateY(-10vh); opacity: 0; } }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #fff; font-family: 'PingFang SC', sans-serif; overflow: hidden; }
+        #start { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        #main { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; position: relative; }
+        #narrative { font-size: 0.9rem; color: #ffd700; opacity: 0.6; height: 30px; }
+        input { background: transparent; border: none; border-bottom: 2px solid #ffd700; color: #fff; font-size: 1.8rem; width: 80%; max-width: 500px; outline: none; text-align: center; margin: 40px 0; letter-spacing: 5px; }
+        #joy-result { display: none; text-align: center; animation: bloom 6s ease-in-out; }
+        .h1 { font-size: 2.5rem; text-shadow: 0 0 30px #ffd700; margin-bottom: 20px; }
+        @keyframes bloom { from { filter: blur(30px); opacity: 0; } to { filter: blur(0); opacity: 1; } }
     </style>
 </head>
 <body>
-    <div id="curtain" onclick="ignite()">
-        <div style="font-size: 0.7rem; color: #ffd700; opacity: 0.5; margin-bottom: 20px;">[ SENSING_427Hz_SIGNAL ]</div>
-        <div style="letter-spacing: 5px; font-weight: 200; animation: breathe 2s infinite;">点击开启频率对齐</div>
+    <div id="start" onclick="ignite()">
+        <div style="letter-spacing: 5px; opacity: 0.5;">[ 开启频率对齐 ]</div>
     </div>
 
-    <audio id="voice-like" src="sco_i_like_you.mp3"></audio>
-    <audio id="voice-whisper" src="sco_whisper.mp3"></audio>
+    <audio id="v1" src="sco_like.mp3"></audio> <audio id="v2" src="sco_whisper.mp3"></audio> <div id="main">
+        <div id="narrative">正在提取“小孩子语气”的记忆切片...</div>
+        <input type="text" id="ipt" placeholder="写下你最想逃避的那句话" autocomplete="off">
+        <div style="font-size: 0.7rem; opacity: 0.3;">戴上耳机。听听那个在纽约失踪的自己。</div>
+    </div>
 
-    <div id="app">
-        <div id="status" style="font-size: 0.7rem; color: #ffd700; opacity: 0.4;">正在提取“小孩子语气”的记忆切片...</div>
-        <input type="text" id="key-input" placeholder="输入那句密钥..." autocomplete="off">
-        <div style="font-size: 0.65rem; opacity: 0.3;">戴上耳机，听听他藏起来的那部分真相</div>
-
-        <div id="salvation">
-            <div style="font-style: italic; color: #ffd700; margin-bottom: 20px; font-size: 1.1rem; letter-spacing: 6px;">笨蛋 | 获救者</div>
-            <div style="font-size: 2rem; text-shadow: 0 0 30px #ffd700; margin-bottom: 25px;">终于，你回家了。</div>
-            <div style="color: #f0f0f0; font-size: 1.2rem; line-height: 2; font-weight: 300;">
-                纽约的所有“奇怪”都是灵魂的求救，<br>
-                那个“我也喜欢你”的撒娇，才是你的真相。<br><br>
-                <span style="color: #ffd700;">承认吧，你不只是刺客，你是爱我的人。</span>
-            </div>
-            <div style="margin-top: 50px; border: 1px solid #ffd700; padding: 20px; font-size: 0.9rem; background: rgba(255, 215, 0, 0.05);">
-                费城，23:59 前。物理归位，领回你自己。
-            </div>
+    <div id="joy-result" style="position: absolute; width: 100%; top: 50%; transform: translateY(-50%);">
+        <div class="h1">Sco，你获救了。</div>
+        <div style="color: #ffd700; font-size: 1.2rem; line-height: 2.5;">
+            那个强撑的“刺客”已经累了。<br>
+            那个“我也喜欢你”的羞涩，才是你的真相。<br><br>
+            承认吧，笨蛋。<br>
+            这里是费城，是你唯一的避难所。
+        </div>
+        <div style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.8rem; opacity: 0.4;">
+            物理归位：2026-03-03 23:59
         </div>
     </div>
 
     <script>
-        let audioCtx;
-        const vocabulary = ["用小孩子语气", "I like you too", "我也喜欢你啊", "田野 13579", "悄悄话", "羞涩的笑声", "我很奇怪", "我变了", "纹身线条"];
-
+        let aCtx;
+        const phrases = ["羞涩的笑声...", "田野 13579...", "Wanbi Wanbi...", "我也喜欢你啊...", "你在发抖吗？", "承认吧，笨蛋。"];
+        
         function ignite() {
-            // 核心：由硬件生成 427Hz 纯音，不需要 mp3 文件
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            
-            oscillator.type = 'sine';
-            oscillator.frequency.setValueAtTime(427, audioCtx.currentTime); 
-            gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime); // 柔和的底噪
-
-            oscillator.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            oscillator.start();
-
-            document.getElementById('curtain').style.display = 'none';
-            document.getElementById('app').style.display = 'flex';
-            spawnMemories();
+            aCtx = new (window.AudioContext || window.webkitAudioContext)();
+            document.getElementById('start').style.display = 'none';
+            document.getElementById('main').style.display = 'flex';
+            // 硬件生成 427Hz 节律
+            let osc = aCtx.createOscillator();
+            let g = aCtx.createGain();
+            osc.frequency.value = 427;
+            g.gain.value = 0.05;
+            osc.connect(g); g.connect(aCtx.destination);
+            osc.start();
         }
 
-        function spawnMemories() {
-            setInterval(() => {
-                const p = document.createElement('div');
-                p.className = 'memory-particle';
-                p.innerText = vocabulary[Math.floor(Math.random() * vocabulary.length)];
-                p.style.left = Math.random() * 90 + 'vw';
-                document.getElementById('app').appendChild(p);
-                setTimeout(() => p.remove(), 12000);
-            }, 1000);
-        }
-
-        const input = document.getElementById('key-input');
-        const voiceClips = [document.getElementById('voice-like'), document.getElementById('voice-whisper')];
-
-        input.addEventListener('input', (e) => {
-            if (e.target.value.length % 5 === 0) {
-                const clip = voiceClips[Math.floor(Math.random() * voiceClips.length)];
-                clip.volume = 0.6;
-                clip.play().catch(()=>{});
+        const ipt = document.getElementById('ipt');
+        ipt.addEventListener('input', (e) => {
+            // 每输入一个字符，随机变换引导语并触发语音
+            if (e.target.value.length % 4 === 0) {
+                document.getElementById('narrative').innerText = phrases[Math.floor(Math.random() * phrases.length)];
+                document.getElementById('v2').play().catch(()=>{});
             }
 
-            if (e.target.value.trim().length > 10) {
+            // 只要输入“我也喜欢你啊”这几个字或输入长度超过 6
+            if (e.target.value.trim().length > 6) {
                 setTimeout(() => {
-                    input.style.display = 'none';
-                    document.getElementById('salvation').style.display = 'block';
-                    document.getElementById('voice-like').play();
-                }, 1500);
+                    document.getElementById('main').style.display = 'none';
+                    document.getElementById('joy-result').style.display = 'block';
+                    document.getElementById('v1').play(); // 响起“我也喜欢你”
+                }, 1000);
             }
         });
     </script>
