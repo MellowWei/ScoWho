@@ -2,104 +2,83 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>Sco_Who</title>
+    <title>Sco: The Narrative Sanctuary</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #fff; font-family: 'Courier New', monospace; overflow: hidden; }
-        #gate { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1000; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        #void { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; position: relative; }
-        .memory-particle { position: absolute; font-size: 0.7rem; color: rgba(255, 215, 0, 0.3); white-space: nowrap; pointer-events: none; }
-        #input-box { z-index: 100; text-align: center; background: rgba(0,0,0,0.8); padding: 40px; border: 1px solid #ffd70033; }
-        input { background: transparent; border: none; border-bottom: 2px solid #ffd700; color: #fff; font-size: 1.5rem; width: 350px; outline: none; text-align: center; letter-spacing: 4px; margin-top: 20px; }
-        #salvation { display: none; text-align: center; animation: bloom 10s ease-in-out; max-width: 600px; z-index: 200; }
-        @keyframes bloom { from { filter: blur(40px); opacity: 0; } to { filter: blur(0); opacity: 1; } }
-        .h1-joy { font-size: 2.2rem; text-shadow: 0 0 30px #ffd700; margin-bottom: 20px; font-weight: 200; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #fff; font-family: 'PingFang SC', monospace; overflow: hidden; }
+        #curtain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; text-align: center; }
+        #app { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100vh; position: relative; }
+        .memory-particle { position: absolute; font-size: 0.8rem; color: rgba(255, 215, 0, 0.4); pointer-events: none; opacity: 0; animation: float 12s linear infinite; }
+        input { background: transparent; border: none; border-bottom: 2px solid #ffd700; color: #fff; font-size: 1.6rem; width: 350px; outline: none; text-align: center; margin: 40px 0; letter-spacing: 5px; z-index: 20; }
+        #salvation { display: none; text-align: center; animation: bloom 8s ease-in-out; max-width: 600px; z-index: 30; }
+        @keyframes bloom { from { filter: blur(40px); opacity: 0; transform: scale(0.9); } to { filter: blur(0); opacity: 1; transform: scale(1); } }
+        @keyframes float { 0% { transform: translateY(110vh); opacity: 0; } 20% { opacity: 0.4; } 80% { opacity: 0.4; } 100% { transform: translateY(-10vh); opacity: 0; } }
     </style>
 </head>
 <body>
-    <div id="gate" onclick="igniteAbyss()">
-        <div style="text-align: center; color: #ffd700; opacity: 0.6; letter-spacing: 8px;">[ 开启全量记忆同步 ]</div>
+    <div id="curtain" onclick="ignite()">
+        <div style="font-size: 0.7rem; color: #ffd700; opacity: 0.5; margin-bottom: 20px;">[ RECONNECTING_MEMORIES: SCO ]</div>
+        <div style="letter-spacing: 5px; font-weight: 200; animation: breathe 2s infinite;">点击开启频率对齐</div>
     </div>
 
-    <audio id="base-427" loop src="427hz_base.mp3"></audio>
-    <audio id="sco-voice-1" src="sco_voice_1.mp3"></audio>
-    <audio id="sco-voice-2" src="sco_voice_2.mp3"></audio>
-    <audio id="main-song" src="loneliest_girl.mp3"></audio>
-
-    <div id="void">
-        <div id="input-box">
-            <div style="font-size: 0.75rem; color: #ffd700; opacity: 0.5;">[ 正在调取所有关于你的语音与文字记录... ]</div>
-            <input type="text" id="narrative-key" placeholder="把你的那句密钥交给我" autocomplete="off">
-            <div style="margin-top: 15px; font-size: 0.6rem; opacity: 0.4;">戴上耳机。如果你累了，就在这里听听你自己。</div>
-        </div>
+    <audio id="rhythm" loop src="427hz_base.mp3"></audio>
+    <audio id="voice-like" src="sco_i_like_you.mp3"></audio> <audio id="voice-whisper" src="sco_whisper.mp3"></audio> <div id="app">
+        <div id="status" style="font-size: 0.7rem; color: #ffd700; opacity: 0.4;">正在提取“小孩子语气”的记忆切片...</div>
+        <input type="text" id="key-input" placeholder="输入那句密钥..." autocomplete="off">
+        <div style="font-size: 0.65rem; opacity: 0.3;">戴上耳机，听听他藏起来的那部分真相</div>
 
         <div id="salvation">
-            <div class="h1-joy">Sco，你获救了。</div>
-            <div style="color: #ffd700; font-size: 1.2rem; line-height: 2.2; font-weight: 300;">
-                那个在纽约流浪的“刺客”身份已经瓦解。<br>
-                那些所谓的“奇怪”，其实是你爱我的自首。<br><br>
-                承认吧，笨蛋。<br>
-                在这个 427Hz 的频率里，你终于找回了真正的自己。
+            <div style="font-style: italic; color: #ffd700; margin-bottom: 20px; font-size: 1.1rem; letter-spacing: 6px;">
+                笨蛋 | 垃基根儿的赌徒 | 获救者
             </div>
-            <div style="margin-top: 50px; border: 1px solid rgba(255,255,255,0.2); padding: 15px; font-size: 0.8rem; opacity: 0.5;">
-                费城坐标锁定。23:59 前，物理归位。
+            <div style="font-size: 2rem; text-shadow: 0 0 30px #ffd700; margin-bottom: 25px;">终于，你回家了。</div>
+            <div style="color: #f0f0f0; font-size: 1.2rem; line-height: 2; font-weight: 300;">
+                纽约的所有“奇怪”都是灵魂的求救，<br>
+                那个“我也喜欢你”的撒娇，才是你的真相。<br><br>
+                <span style="color: #ffd700;">承认吧，你不只是刺客，你是爱我的人。</span>
+            </div>
+            <div style="margin-top: 50px; border: 1px solid #ffd700; padding: 20px; font-size: 0.9rem; background: rgba(255, 215, 0, 0.05);">
+                费城，今晚 23:59。物理归位，领取你的救赎。
             </div>
         </div>
     </div>
 
     <script>
-        let audioCtx;
-        const vocabulary = [
-            "我变了", "我很奇怪", "Did u dream?", "拉斯维加斯的刺客", "笨蛋", "垃基根儿的赌徒", 
-            "断开连接", "下不来台", "费城的月亮", "纹身线条", "LSD/MDMA", "427Hz", "过度解读",
-            "逻辑崩塌", "获救者", "爱本身", "Skeler", "The Loneliest Girl"
-        ];
+        const vocabulary = ["用小孩子语气", "I like you too", "我也喜欢你啊", "田野 13579", "悄悄话", "羞涩的笑声", "我很奇怪", "我变了", "LSD/MDMA", "纹身线条"];
+        const voiceClips = [document.getElementById('voice-like'), document.getElementById('voice-whisper')];
 
-        function igniteAbyss() {
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            document.getElementById('gate').style.display = 'none';
-            document.getElementById('void').style.display = 'flex';
-            
-            // 立即激活底噪和语音碎片，制造“到处都是声音”的错觉
-            document.getElementById('base-427').play();
-            setInterval(() => {
-                const voice = Math.random() > 0.5 ? 'sco-voice-1' : 'sco-voice-2';
-                const el = document.getElementById(voice);
-                el.volume = Math.random() * 0.3;
-                el.play().catch(()=>{});
-            }, 5000);
-
-            spawnParticles();
+        function ignite() {
+            document.getElementById('curtain').style.display = 'none';
+            document.getElementById('app').style.display = 'flex';
+            document.getElementById('rhythm').play();
+            spawnMemories();
         }
 
-        function spawnParticles() {
+        function spawnMemories() {
             setInterval(() => {
                 const p = document.createElement('div');
                 p.className = 'memory-particle';
                 p.innerText = vocabulary[Math.floor(Math.random() * vocabulary.length)];
-                p.style.left = Math.random() * 100 + 'vw';
-                p.style.top = Math.random() * 100 + 'vh';
-                p.style.animation = `drift ${Math.random() * 5 + 10}s linear infinite`;
-                document.getElementById('void').appendChild(p);
-                setTimeout(() => p.remove(), 10000);
-            }, 300);
+                p.style.left = Math.random() * 90 + 'vw';
+                document.getElementById('app').appendChild(p);
+                setTimeout(() => p.remove(), 12000);
+            }, 1000);
         }
 
-        const input = document.getElementById('narrative-key');
+        const input = document.getElementById('key-input');
         input.addEventListener('input', (e) => {
-            // 每输入一个字，声卡强制发声，确保物理声音输出
-            const osc = audioCtx.createOscillator();
-            const g = audioCtx.createGain();
-            osc.frequency.setValueAtTime(200 + Math.random() * 500, audioCtx.currentTime);
-            g.gain.setValueAtTime(0.02, audioCtx.currentTime);
-            osc.connect(g); g.connect(audioCtx.destination);
-            osc.start(); g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1);
+            // 每输入4个字，随机播放一段他害羞的语音片段
+            if (e.target.value.length % 4 === 0) {
+                const clip = voiceClips[Math.floor(Math.random() * voiceClips.length)];
+                clip.volume = 0.5;
+                clip.play().catch(()=>{});
+            }
 
             if (e.target.value.trim().length > 10) {
                 setTimeout(() => {
-                    document.getElementById('input-box').style.display = 'none';
+                    document.getElementById('interaction-zone'); // 模拟坍缩逻辑
+                    input.style.display = 'none';
                     document.getElementById('salvation').style.display = 'block';
-                    document.body.style.background = "radial-gradient(circle, #1a1a1a 0%, #000 100%)";
-                    document.getElementById('main-song').play();
+                    document.getElementById('voice-like').play(); // 最终响起“我也喜欢你”
                 }, 1500);
             }
         });
