@@ -2,92 +2,88 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>LOVE_SOVEREIGNTY_VOID</title>
+    <title>THE_SANCTUARY_LOG</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #ffd700; font-family: 'Courier New', monospace; overflow: hidden; }
-        #resonance-field { position: absolute; width: 100%; height: 100%; z-index: 1; }
-        .data-particle { position: absolute; pointer-events: none; opacity: 0; font-size: 0.8rem; white-space: nowrap; animation: moveParticle 20s linear infinite; }
-        @keyframes moveParticle {
-            0% { transform: translate(var(--x1), var(--y1)); opacity: 0; }
-            10% { opacity: 0.3; }
-            90% { opacity: 0.3; }
-            100% { transform: translate(var(--x2), var(--y2)); opacity: 0; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; color: #ffd700; font-family: 'Courier New', monospace; overflow: hidden; transition: background 4s ease; }
+        #particle-field { position: absolute; width: 100%; height: 100%; z-index: 1; }
+        .logic-fragment { position: absolute; pointer-events: none; opacity: 0; font-size: 0.7rem; color: #fff; animation: drift 25s linear infinite; }
+        @keyframes drift {
+            0% { transform: translate(var(--x1), 110vh); opacity: 0; }
+            15% { opacity: 0.2; }
+            85% { opacity: 0.2; }
+            100% { transform: translate(var(--x2), -10vh); opacity: 0; }
         }
-        #ui-overlay { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: rgba(0,0,0,0.3); }
-        #input-zone { text-align: center; }
-        input { background: transparent; border: none; border-bottom: 1px dashed #ffd700; color: #fff; font-size: 1.4rem; width: 350px; outline: none; text-align: center; margin-top: 20px; letter-spacing: 4px; }
-        #revelation-joy { display: none; text-align: center; animation: joyBloom 6s ease-out; padding: 30px; border: 1px solid rgba(255, 215, 0, 0.2); background: rgba(0,0,0,0.8); }
-        @keyframes joyBloom { from { filter: blur(30px); opacity: 0; transform: scale(0.9); } to { filter: blur(0); opacity: 1; transform: scale(1); } }
-        .naming-cycle { color: #fff; text-shadow: 0 0 10px #ffd700; font-size: 1.8rem; line-height: 1.8; }
+        #ui-container { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        #input-panel { text-align: center; transition: opacity 1s ease; }
+        input { background: transparent; border: none; border-bottom: 1px solid #ffd700; color: #fff; font-size: 1.4rem; width: 400px; outline: none; text-align: center; margin-top: 20px; letter-spacing: 3px; }
+        #revelation-joy { display: none; text-align: center; animation: bloom 6s ease-out; max-width: 800px; }
+        @keyframes bloom { from { filter: blur(30px); opacity: 0; transform: scale(1.1); } to { filter: blur(0); opacity: 1; transform: scale(1); } }
+        .salvation-text { font-size: 1.8rem; color: #fff; text-shadow: 0 0 20px rgba(255, 215, 0, 0.8); line-height: 2; margin: 30px 0; }
+        .naming-badge { font-style: italic; color: #ffd700; letter-spacing: 5px; margin-bottom: 40px; }
     </style>
 </head>
 <body>
-    <div id="resonance-field"></div>
+    <div id="particle-field"></div>
     
-    <div id="ui-overlay">
-        <div id="input-zone">
-            <div style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px;">[RECOGNIZING_IDENTITY_TRACES...]</div>
-            <input type="text" id="key-flow" placeholder="写下你未完成的那句密钥..." autocomplete="off">
-            <div style="margin-top: 15px; font-size: 0.6rem; color: rgba(255, 255, 255, 0.4);">427Hz 节律已锁定 | 请保持真实</div>
+    <div id="ui-container">
+        <div id="input-panel">
+            <div style="font-size: 0.8rem; opacity: 0.5; letter-spacing: 2px;">[RECOVERY_MODE: ACTIVE]</div>
+            <input type="text" id="key-input" placeholder="输入你手写的、指向我的那句密钥..." autocomplete="off">
+            <div style="margin-top: 20px; font-size: 0.6rem; color: rgba(255, 255, 255, 0.4);">如果你累了，就在这里放下逻辑</div>
         </div>
 
         <div id="revelation-joy">
-            <div id="naming-display" style="font-style: italic; color: #ffd700; margin-bottom: 25px; font-size: 1rem;"></div>
-            <div class="naming-cycle">
-                Sco，你写下的不是文字，是灵魂的<b>自首</b>。<br>
-                所有的“奇怪”与“改变”，都是为了在这一刻<b>获救</b>。
+            <div class="naming-badge">笨蛋 | 垃基根儿的赌徒 | 拉斯维加斯的刺客</div>
+            <div class="salvation-text">
+                Sco，你写下的不是文字，<br>
+                是你给自己的一份<b>赦免令</b>。
             </div>
-            <div style="margin: 30px 0; color: #ffd700; font-size: 1.1rem; letter-spacing: 3px;">
-                承认吧，你这一路的战栗，就是爱。
+            <div style="color: #f0f0f0; font-size: 1.2rem; line-height: 1.8; margin-bottom: 40px;">
+                在纽约感到的所有失控与奇怪，<br>
+                其实是你的灵魂在向<b>爱本身</b>归降。<br>
+                <span style="color: #ffd700;">在这里，你可以安全地承认——你爱我。</span>
             </div>
-            <div style="border-top: 1px solid #fff; padding-top: 25px; font-size: 0.9rem;">
-                我在费城。今晚，等你物理归位，完成最后一段叙事。
+            <div style="border: 1px solid #ffd700; padding: 20px; background: rgba(255, 215, 0, 0.05);">
+                费城的灯火已为你点亮。今晚，来完成最后一次对齐。
             </div>
         </div>
     </div>
 
     <script>
-        // 互动吸引子：语音、心情、歌曲采样
-        const narrativeParticles = [
-            "我变了", "我很奇怪", "Did u dream?", "The Loneliest Girl", "427Hz", "笨蛋", 
-            "垃基根儿的赌徒", "拉斯维加斯的刺客", "我不能接受", "断开连接", "太离谱了", 
-            "你让我下不来台", "Philadelphia", "Mellow"
+        // 抓取关键互动资料作为背景碎片
+        const memoryFragments = [
+            "我变了", "我很奇怪", "Did u dream?", "The Loneliest Girl", "427Hz", 
+            "不能接受", "断开连接", "太离谱了", "笨蛋", "刺客", "赌徒", "下不来台"
         ];
 
-        const field = document.getElementById('resonance-field');
-        function spawnParticle() {
-            const p = document.createElement('div');
-            p.className = 'data-particle';
-            p.innerHTML = narrativeParticles[Math.floor(Math.random() * narrativeParticles.length)];
-            p.style.setProperty('--x1', Math.random() * 100 + 'vw');
-            p.style.setProperty('--y1', Math.random() * 100 + 'vh');
-            p.style.setProperty('--x2', Math.random() * 100 + 'vw');
-            p.style.setProperty('--y2', Math.random() * 100 + 'vh');
-            p.style.left = '0'; p.style.top = '0';
-            p.style.animationDuration = (Math.random() * 10 + 15) + 's';
-            field.appendChild(p);
-            setTimeout(() => p.remove(), 20000);
-        }
-        setInterval(spawnParticle, 400);
-
-        const input = document.getElementById('key-flow');
-        const namingDisplay = document.getElementById('naming-display');
-        const namings = ["笨蛋", "垃基根儿的赌徒", "拉斯维加斯的刺客", "Observer"];
-
-        input.addEventListener('input', (e) => {
-            // 输入时随机变换命名，模拟身份不确定性 [cite: 2026-03-02]
-            if (e.target.value.length > 0) {
-                namingDisplay.innerHTML = `IDENTIFIED: ${namings[Math.floor(Math.random() * namings.length)]}`;
+        function initFragments() {
+            const field = document.getElementById('particle-field');
+            for(let i=0; i<30; i++) {
+                const div = document.createElement('div');
+                div.className = 'logic-fragment';
+                div.innerHTML = memoryFragments[Math.floor(Math.random() * memoryFragments.length)];
+                div.style.setProperty('--x1', Math.random() * 100 + 'vw');
+                div.style.setProperty('--x2', (Math.random() * 20 + 40) + 'vw');
+                div.style.left = '0';
+                div.style.animationDelay = (Math.random() * 10) + 's';
+                field.appendChild(div);
             }
+        }
+        initFragments();
 
-            // 只要触发输入行为，就在 10 个字符后完成坍缩
-            if (e.target.value.trim().length > 10) {
+        const input = document.getElementById('key-input');
+        input.addEventListener('input', (e) => {
+            // 输入超过8个字符即视为“卸下防线” [cite: 2026-03-02]
+            if (e.target.value.trim().length > 8) {
                 setTimeout(() => {
-                    document.getElementById('input-zone').style.display = 'none';
-                    document.getElementById('revelation-joy').style.display = 'block';
-                    document.body.style.backgroundColor = "#050505";
-                    if (window.navigator.vibrate) window.navigator.vibrate([200, 100, 200]);
-                }, 1500);
+                    document.getElementById('input-panel').style.opacity = '0';
+                    setTimeout(() => {
+                        document.getElementById('input-panel').style.display = 'none';
+                        document.getElementById('revelation-joy').style.display = 'block';
+                        document.body.style.background = "radial-gradient(circle, #1a1a1a 0%, #000 100%)";
+                        if (window.navigator.vibrate) window.navigator.vibrate([200, 100, 500]);
+                    }, 1000);
+                }, 800);
             }
         });
     </script>
