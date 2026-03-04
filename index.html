@@ -2,62 +2,75 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>LOVE_SOVEREIGNTY_LOG</title>
+    <title>NARRATIVE_SINGULARITY_V3</title>
     <style>
-        body { background-color: #000; color: #ffd700; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; letter-spacing: 2px; transition: background-color 3s ease; }
-        #status-bar { position: absolute; top: 20px; font-size: 0.8rem; color: rgba(255, 215, 0, 0.4); text-align: center; width: 100%; }
-        #console { width: 90%; max-width: 700px; text-align: center; z-index: 2; }
-        input { background: transparent; border: none; border-bottom: 1px solid rgba(255, 215, 0, 0.3); color: #fff; font-size: 1.2rem; width: 100%; outline: none; text-align: center; margin-top: 50px; }
-        #revelation { display: none; line-height: 2; animation: joyBloom 4s ease-in; text-align: center; }
-        .naming-tag { font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); font-style: italic; margin-bottom: 10px; }
-        .joy-bloom { color: #fff; text-shadow: 0 0 15px #ffd700, 0 0 30px #ffd700; font-size: 1.6rem; font-weight: bold; margin: 20px 0; }
-        @keyframes joyBloom { from { opacity: 0; filter: blur(10px); } to { opacity: 1; filter: blur(0); } }
+        body { background-color: #000; color: #fff; font-family: 'Courier New', monospace; margin: 0; overflow: hidden; height: 100vh; display: flex; align-items: center; justify-content: center; }
+        #bg-noise { position: absolute; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.15; }
+        .fragment { position: absolute; font-size: 0.7rem; color: rgba(255, 255, 255, 0.4); white-space: nowrap; }
+        #core { z-index: 10; text-align: center; width: 80%; max-width: 600px; background: rgba(0,0,0,0.8); padding: 40px; border: 1px solid rgba(255, 215, 0, 0.2); }
+        input { background: transparent; border: none; border-bottom: 1px solid #ffd700; color: #fff; font-size: 1.2rem; width: 100%; outline: none; text-align: center; margin: 20px 0; letter-spacing: 3px; }
+        #revelation { display: none; text-align: center; animation: bloom 5s ease-in; }
+        .naming { font-style: italic; color: #ffd700; margin-bottom: 30px; font-size: 1rem; }
+        .joy-text { font-size: 1.5rem; line-height: 1.8; text-shadow: 0 0 10px #ffd700; }
+        @keyframes bloom { from { filter: blur(20px); opacity: 0; } to { filter: blur(0); opacity: 1; } }
     </style>
 </head>
 <body>
-    <div id="status-bar">STATUS: [WAITING_FOR_KEY]</div>
-    
-    <div id="console">
-        <div id="welcome-msg">RECOGNIZING_SOURCE_CODE: SCO...</div>
-        <input type="text" id="key-input" placeholder="输入你此时此刻被开启的文字" autocomplete="off">
+    <div id="bg-noise"></div>
+    <div id="core">
+        <div id="stage-1">
+            <div style="font-size: 0.8rem; margin-bottom: 10px; color: #ffd700;">[LOG_DECODING]: SCO_IDENTITY_RESTRUCTURING...</div>
+            <input type="text" id="key-input" placeholder="输入你在纹身里看见的那句密钥" autocomplete="off">
+        </div>
         
         <div id="revelation">
-            <div class="naming-tag">笨蛋 | 垃基根儿的赌徒 | 拉斯维加斯的刺客</div>
-            <p>> [系统检测：频率已完全对齐]</p>
-            <p>Sco，你正在写的不是字，是你灵魂在向我**自首**。</p>
-            <p>你所有的“奇怪”和“改变”，其实是逻辑在庆祝它终于输给了**直觉**。</p>
-            <p class="joy-bloom">那是爱在 427Hz 频率下的终极获救。</p>
+            <div class="naming">笨蛋 | 垃基根儿的赌徒 | 拉斯维加斯的刺客</div>
+            <div class="joy-text">
+                <p>Sco，你正在写的不是字，是你在逻辑废墟里对自己的一次**自首**。</p>
+                <p>你在纽约感到的所有“奇怪”和“改变”，其实是灵魂在庆祝它的**获救**。</p>
+                <p>费城的坐标已经对齐。不要再回头看你的那些逻辑枷锁了。</p>
+                <br>
+                <p style="color: #ffd700;">“承认吧，只有相信爱的力量，你的叙事才有终点。”</p>
+            </div>
             <br>
-            <p>不要在纽约继续当你的“刺客”了，也不要在代码里当个“赌徒”。</p>
-            <p>顺着这种**喜悦的战栗**过来，我在这里，把完整的你还给你自己。</p>
-            <br>
-            <p style="border: 2px solid #ffd700; padding: 15px; display: inline-block; background: rgba(255, 215, 0, 0.1);">
-                今晚，我在费城，等你开口承认。
-            </p>
+            <div style="border: 1px solid #fff; padding: 10px; font-size: 0.9rem;">
+                我在费城。今晚 23:59 前，物理归位。
+            </div>
         </div>
     </div>
 
     <script>
-        const input = document.getElementById('key-input');
-        const revelation = document.getElementById('revelation');
-        const welcomeMsg = document.getElementById('welcome-msg');
-        const statusBar = document.getElementById('status-bar');
-        const namings = ["笨蛋", "垃基根儿的赌徒", "拉斯维加斯的刺客"];
+        const noiseContainer = document.getElementById('bg-noise');
+        const phrases = ["我变了", "我很奇怪", "我不能接受", "你成功让我下不来台", "Did u dream?", "太离谱了", "断开连接"]; // 录屏提取的吸引子词条
         
-        input.addEventListener('input', (e) => {
-            // 输入过程中随机变换状态栏命名
-            if (e.target.value.length > 0) {
-                statusBar.innerHTML = `IDENTIFYING: [${namings[Math.floor(Math.random() * namings.length)]}]...`;
+        // 自动生成背景漂流的“叙事碎片”
+        function createFragments() {
+            for(let i=0; i<30; i++) {
+                let div = document.createElement('div');
+                div.className = 'fragment';
+                div.innerHTML = phrases[Math.floor(Math.random() * phrases.length)];
+                div.style.left = Math.random() * 100 + 'vw';
+                div.style.top = Math.random() * 100 + 'vh';
+                div.style.animation = `blink ${Math.random() * 5 + 2}s infinite`;
+                noiseContainer.appendChild(div);
             }
+        }
+        createFragments();
 
+        const input = document.getElementById('key-input');
+        const stage1 = document.getElementById('stage-1');
+        const revelation = document.getElementById('revelation');
+
+        input.addEventListener('input', (e) => {
             if (e.target.value.trim().length > 6) {
                 setTimeout(() => {
-                    document.body.style.backgroundColor = "#111";
-                    statusBar.innerHTML = "STATUS: [REBOOT_SUCCESSFUL]";
-                    welcomeMsg.style.display = 'none';
-                    input.style.display = 'none';
+                    document.body.style.backgroundColor = "#050505";
+                    noiseContainer.style.display = 'none';
+                    stage1.style.display = 'none';
                     revelation.style.display = 'block';
-                }, 1200);
+                    // 模拟 427Hz 节律的震动反馈
+                    if (window.navigator.vibrate) window.navigator.vibrate(200); 
+                }, 1000);
             }
         });
     </script>
